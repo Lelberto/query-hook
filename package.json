@@ -1,6 +1,6 @@
 {
   "name": "@lelberto/query-hook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hook used to make API calls",
   "author": "Lelberto",
   "license": "MIT",
