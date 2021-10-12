@@ -12,16 +12,79 @@ npm install --save query-hook
 
 ## Usage
 
-```tsx
-import * as React from 'react'
+### JavaScript
+```jsx
+import { useQuery, Status } from 'query-hook';
 
-import { useMyHook } from 'query-hook'
+const Component = () => {
+  const usersQuery = useQuery();
 
-const Example = () => {
-  const example = useMyHook()
+  useEffect(() => {
+    switch (usersQuery.status) {
+      case Status.INIT:
+        usersQuery.get('https://api.example.com/users');
+        break;
+      case Status.SUCCESS:
+        console.log('Fetched users :', usersQuery.response.users);
+        break;
+      case Status.ERROR:
+        console.error('Unable to fetch users :', usersQuery.errorResponse.errors);
+        break;
+    }
+  }, [usersQuery.status]);
+
   return (
     <div>
-      {example}
+      {usersQuery?.response.users.map(user => user.name)}
+    </div>
+  )
+}
+```
+
+### TypeScript
+```tsx
+import { FC } from 'react';
+
+import { useQuery, Status, ErrorData, Response, ErrorResponse } from 'query-hook';
+
+// Custom error data (optional)
+interface CustomErrorData extends ErrorData {
+  error: 'access_denied' | 'unauthorized' | 'not_found';
+}
+
+// Custom response (optional)
+interface UsersResponse extends Response {
+  users: [{
+    email: string;
+    name: string;
+  }];
+}
+
+// Custom error response with custom error data (optional)
+interface CustomErrorResponse extends ErrorResponse {
+  errors: CustomErrorData[];
+}
+
+const Component: FC = () => {
+  const usersQuery = useQuery<UsersResponse, CustomErrorResponse>();
+
+  useEffect(() => {
+    switch (usersQuery.status) {
+      case Status.INIT:
+        usersQuery.get('https://api.example.com/users');
+        break;
+      case Status.SUCCESS:
+        console.log('Fetched users :', usersQuery.response.users);
+        break;
+      case Status.ERROR:
+        console.error('Unable to fetch users :', usersQuery.errorResponse.errors);
+        break;
+    }
+  }, [usersQuery.status]);
+
+  return (
+    <div>
+      {usersQuery?.response.users.map(user => user.name)}
     </div>
   )
 }
