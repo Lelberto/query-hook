@@ -2,7 +2,7 @@
 
 > React hook used to make API calls
 
-[![NPM](https://img.shields.io/npm/v/query-hook.svg)](https://www.npmjs.com/package/query-hook) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Package version](https://img.shields.io/github/package-json/v/Lelberto/query-hook)](https://www.npmjs.com/package/@lelberto/query-hook) [![NPM](https://img.shields.io/npm/v/query-hook.svg)](https://www.npmjs.com/package/@lelberto/query-hook) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
