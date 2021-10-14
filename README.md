@@ -7,14 +7,14 @@
 ## Install
 
 ```bash
-npm install --save query-hook
+npm install --save @lelberto/query-hook
 ```
 
 ## Usage
 
 ### JavaScript
 ```jsx
-import { useQuery, Status } from 'query-hook';
+import { useQuery, Status } from '@lelberto/query-hook';
 
 const Component = () => {
   const usersQuery = useQuery();
@@ -45,7 +45,7 @@ const Component = () => {
 ```tsx
 import { FC } from 'react';
 
-import { useQuery, Status, ErrorData, Response, ErrorResponse } from 'query-hook';
+import { useQuery, Status, ErrorData, Response, ErrorResponse } from '@lelberto/query-hook';
 
 // Custom error data (optional)
 interface CustomErrorData extends ErrorData {
