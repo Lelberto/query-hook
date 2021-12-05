@@ -95,7 +95,6 @@ export const useQuery = <R extends Response, E extends ErrorResponse>(): Query<R
   }
 
   function handleError(err: AxiosError<ErrorResponse>) {
-    console.log(err);
     if (err.message === 'Network Error') {
       setErrorResponse({ errors: [{ error: 'network_error', error_description: 'Could not connect to server' }] } as E);
     } else {
